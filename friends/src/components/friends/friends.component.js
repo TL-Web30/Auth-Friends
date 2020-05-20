@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-
+import Friend from '../friend/friend.component';
 import {axiosWithAuth} from '../../utils/axiosWithAuth';
+import './friends.styles.scss';
 
 class Friends extends Component {
     constructor(){
@@ -20,20 +21,23 @@ class Friends extends Component {
         .get('/friends')
         .then(res => {
             console.log(res.data)
-            this.setState(res.data)
+            this.setState({friends: res.data})
         })
         .catch(err => console.log(err.response))
     }
 
     render(){
-        const { friends } = this.state
+        
+
         return(
-            <div className='friends'>
-                <h1>My Top 8 Friends</h1>
-                {
-                    friends.map(({id, ...otherFriendProps}) =>
-                <Friend key={id} {...otherFriendProps}/>)
-                }
+            <div>
+                <h1>My Top 8 Friends</h1>            
+                <div className='friends'>                
+                    {
+                        this.state.friends.map(({id, ...otherFriendProps}) =>(
+                    <Friend key={id} {...otherFriendProps}/>))
+                    }
+                </div>                
             </div>
         )
     }

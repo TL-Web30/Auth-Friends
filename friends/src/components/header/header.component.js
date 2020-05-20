@@ -13,8 +13,11 @@ const Header = () => (
             <Link className='option' to='/signin'>
             SIGN IN
             </Link>
-            <Link className='option' to='/contact'>
-            REGISTER
+            <Link className='option' to='/addfriend'>
+            ADD FRIEND
+            </Link>
+            <Link className='option' to='/friends'>
+            SEE FRIENDS
             </Link>
         </div>
     </div>
